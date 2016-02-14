@@ -1,0 +1,14 @@
+@import "util/fonts";
+@import "util/mixins";
+@import "util/variables";
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 420px;
+  right: 0;
+  height: 60px;
+  z-index: 100;
+
+  background: $dark-1;
+}

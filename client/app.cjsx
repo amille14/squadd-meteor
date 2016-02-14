@@ -1,6 +1,7 @@
 @App = React.createClass
-  render: ->
-    <h1>Squadd</h1>
-    <Nav />
-    <Sidebar />
-    <MainContainer />
+  render: =>
+    <div id="app">
+      <Sidebar />
+      <Nav />
+      <MainContainer />
+    </div>

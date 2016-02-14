@@ -1,0 +1,11 @@
+@import "util/fonts";
+@import "util/mixins";
+@import "util/variables";
+
+body {
+  font-family: $source-sans-pro;
+  font-weight: 400;
+  font-size: 16px;
+  text-rendering: optimizelegibility
+  -webkit-font-smoothing: antialiased;
+}

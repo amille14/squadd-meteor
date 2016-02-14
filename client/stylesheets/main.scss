@@ -1,0 +1,16 @@
+@import "util/fonts";
+@import "util/mixins";
+@import "util/variables";
+
+#main-container {
+  position: fixed;
+  top: 60px;
+  left: 420px;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  padding: 40px;
+
+  background: $dark-2;
+  box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.4);
+}

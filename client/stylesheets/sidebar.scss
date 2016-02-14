@@ -1,0 +1,14 @@
+@import "util/fonts";
+@import "util/mixins";
+@import "util/variables";
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 420px;
+  z-index: 90;
+
+  background: $dark-1;
+}
