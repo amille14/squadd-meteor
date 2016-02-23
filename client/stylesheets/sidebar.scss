@@ -1,4 +1,3 @@
-@import "util/fonts";
 @import "util/mixins";
 @import "util/variables";
 
@@ -7,8 +6,8 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 420px;
+  width: 564px;
   z-index: 90;
 
-  background: $dark-1;
+  background: $gray;
 }

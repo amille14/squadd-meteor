@@ -1,1 +1,71 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic);
+@font-face {
+    font-family: 'Eau Douce';
+    src: url('/fonts/eau_douce_sans_bold-webfont.eot');
+    src: url('/fonts/eau_douce_sans_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/eau_douce_sans_bold-webfont.woff2') format('woff2'),
+         url('/fonts/eau_douce_sans_bold-webfont.woff') format('woff'),
+         url('/fonts/eau_douce_sans_bold-webfont.ttf') format('truetype'),
+         url('/fonts/eau_douce_sans_bold-webfont.svg#eau_doucesans_bold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eau Douce';
+    src: url('/fonts/eau_douce_sans_heavy-webfont.eot');
+    src: url('/fonts/eau_douce_sans_heavy-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/eau_douce_sans_heavy-webfont.woff2') format('woff2'),
+         url('/fonts/eau_douce_sans_heavy-webfont.woff') format('woff'),
+         url('/fonts/eau_douce_sans_heavy-webfont.ttf') format('truetype'),
+         url('/fonts/eau_douce_sans_heavy-webfont.svg#eau_doucesans_heavy') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eau Douce';
+    src: url('/fonts/eau_douce_sans_light-webfont.eot');
+    src: url('/fonts/eau_douce_sans_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/eau_douce_sans_light-webfont.woff2') format('woff2'),
+         url('/fonts/eau_douce_sans_light-webfont.woff') format('woff'),
+         url('/fonts/eau_douce_sans_light-webfont.ttf') format('truetype'),
+         url('/fonts/eau_douce_sans_light-webfont.svg#eau_doucesans_light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eau Douce';
+    src: url('/fonts/eau_douce_sans_medium-webfont.eot');
+    src: url('/fonts/eau_douce_sans_medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/eau_douce_sans_medium-webfont.woff2') format('woff2'),
+         url('/fonts/eau_douce_sans_medium-webfont.woff') format('woff'),
+         url('/fonts/eau_douce_sans_medium-webfont.ttf') format('truetype'),
+         url('/fonts/eau_douce_sans_medium-webfont.svg#eau_doucesans_medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eau Douce';
+    src: url('/fonts/eau_douce_sans_regular-webfont.eot');
+    src: url('/fonts/eau_douce_sans_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/eau_douce_sans_regular-webfont.woff2') format('woff2'),
+         url('/fonts/eau_douce_sans_regular-webfont.woff') format('woff'),
+         url('/fonts/eau_douce_sans_regular-webfont.ttf') format('truetype'),
+         url('/fonts/eau_douce_sans_regular-webfont.svg#eau_doucesans_regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Eau Douce';
+    src: url('/fonts/eau_douce_sans_thin-webfont.eot');
+    src: url('/fonts/eau_douce_sans_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/eau_douce_sans_thin-webfont.woff2') format('woff2'),
+         url('/fonts/eau_douce_sans_thin-webfont.woff') format('woff'),
+         url('/fonts/eau_douce_sans_thin-webfont.ttf') format('truetype'),
+         url('/fonts/eau_douce_sans_thin-webfont.svg#eau_doucesans_thin') format('svg');
+    font-weight: 200;
+    font-style: normal;
+}

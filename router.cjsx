@@ -1,7 +1,7 @@
 FlowRouter.route '/',
   name: 'app'
   action: ->
-    ReactLayout.render Layout, content: <App />
+    ReactLayout.render App
 
 roomGroup = FlowRouter.group
   prefix: '/:roomName'
