@@ -16,11 +16,14 @@
     width: 100%;
 
     #message-input {
+      box-sizing: padding-box;
       width: 100%;
-      padding: 15px 10px;
+      padding: 9px 10px;
+      line-height: 18px;
       resize: none !important;
       -webkit-appearance: none;
-
+      overflow-y: auto;
+      outline: none !important;
       background: white;
       border: 2px solid $purple;
       @include border-radius(3px);
