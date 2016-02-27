@@ -6,7 +6,7 @@
   getInitialState: ->
     # marginBottom - the margin-bottom css style
     # scrollTo - the percentage down the page we should scroll to on next update
-    {marginBottom: 69, scrollTo: 100}
+    {marginBottom: 69, scrollToBottom: true}
 
   getMeteorData: ->
     return {
@@ -16,34 +16,27 @@
   componentDidMount: ->
     @_scrollToBottom()
 
+  componentWillUpdate: (nextProps, nextState) ->
+    $el = $(@refs.messagesContainer)
+    @shouldScrollBottom = ($el.scrollTop() + $el.prop('offsetHeight') is @_getScrollHeight()) or nextState.scrollToBottom
+
   componentDidUpdate: ->
-    @_scrollTo()
+    @_scrollToBottom() if @shouldScrollBottom
 
   shouldComponentUpdate: (nextProps, nextState) ->
     @state.marginBottom isnt nextState.marginBottom or
     @state.scrollTo isnt nextState.scrollTo
 
-  render: ->
-    props =
-      style:
-        marginBottom: @state.marginBottom
-
-    <div id="messages-container" ref="messagesContainer" {...props}>
-      <div id="messages">{@_renderMessages()}</div>
-      <MessageInput parent={@} />
-    </div>
-
-  _scrollTo: ->
-    $(@refs.messagesContainer).scrollTop (@state.scrollTo / 100) * @_getScrollHeight()
-
   _scrollToBottom: ->
     $(@refs.messagesContainer).scrollTop @_getScrollHeight()
 
-  _updateMarginBottom: (bottom, reset = false) ->
+  _updateMarginBottom: (bottom, reset=false) ->
     if reset
-      @setState @getInitialState
+      @setState @getInitialState()
     else
-      @setState(marginBottom: bottom, scrollTo: @_getScrollPercentage())
+      @setState(marginBottom: bottom, scrollToBottom: false)
+
+  _getScrollHeight: -> $(@refs.messagesContainer).prop("scrollHeight")
 
   _renderMessages: ->
     @data.messages.map (message) =>
@@ -51,5 +44,12 @@
         <Message key={message._id} text={message.text} time={message.createdAt} />
       </TransitionFlashBG>
 
-  _getScrollHeight: -> $(@refs.messagesContainer).prop("scrollHeight")
-  _getScrollPercentage: -> $(@refs.messagesContainer).scrollTop() / @_getScrollHeight() * 100
+  render: ->
+    props =
+      style:
+        marginBottom: @state.marginBottom
+
+    <div id="messages-container" ref="messagesContainer" {...props}>
+      <div id="messages" ref="messages">{@_renderMessages()}</div>
+      <MessageInput parent={@} />
+    </div>

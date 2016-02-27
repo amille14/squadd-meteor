@@ -9,25 +9,6 @@
     @props.parent._updateMarginBottom $(@refs.messageInputContainer).outerHeight(), @justSubmitted
     @justSubmitted = false
 
-  render: ->
-    props =
-      style:
-        height: @state.height
-
-    <div id="message-input-container" ref="messageInputContainer">
-      <form onSubmit={@_handleSubmit} ref="messageForm" id="message-input-form">
-        <textarea id="message-input"
-                  ref="messageInput"
-                  onChange={@_updateHeight}
-                  onKeyPress={@_handleKeyPress}
-                  autoCorrect="off"
-                  autoComplete="off"
-                  spellCheck="true"
-                  placeholder="type something..."
-                  {...props} />
-      </form>
-    </div>
-
   _handleSubmit: (e) ->
     e?.preventDefault()
     text = @refs.messageInput.value?.trim()
@@ -58,3 +39,22 @@
 
     $(@refs.messageInput).css(height: newHeight) 
     @setState({height: newHeight})
+
+  render: ->
+    props =
+      style:
+        height: @state.height
+
+    <div id="message-input-container" ref="messageInputContainer">
+      <form onSubmit={@_handleSubmit} ref="messageForm" id="message-input-form">
+        <textarea id="message-input"
+                  ref="messageInput"
+                  onChange={@_updateHeight}
+                  onKeyPress={@_handleKeyPress}
+                  autoCorrect="off"
+                  autoComplete="off"
+                  spellCheck="true"
+                  placeholder="type something..."
+                  {...props} />
+      </form>
+    </div>
