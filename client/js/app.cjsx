@@ -3,5 +3,5 @@
     <div id="app">
       <Sidebar />
       <Nav />
-      <MainContainer />
+      <MessagesContainer />
     </div>

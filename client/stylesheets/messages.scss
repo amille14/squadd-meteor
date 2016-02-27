@@ -1,0 +1,45 @@
+@import "util/mixins";
+@import "util/variables";
+
+#messages-container {
+  position: fixed;
+  top: 70px;
+  left: 564px;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  padding: 24px 24px 8px;
+  margin-bottom: 69px;
+  background: $white;
+  overflow-y: scroll;
+
+  #messages {
+    .message {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+#message-input-container {
+  position: fixed;
+  left: 564px;
+  right: 0;
+  bottom: 0;
+  padding: 0px 24px 24px;
+  z-index: 100;
+  background: $white;
+
+  #message-input {
+    box-sizing: padding-box;
+    width: 100%;
+    padding: 9px 10px;
+    line-height: 18px;
+    resize: none !important;
+    -webkit-appearance: none;
+    overflow-y: auto;
+    outline: none !important;
+    background: white;
+    border: 2px solid $purple;
+    @include border-radius(3px);
+  }
+}
