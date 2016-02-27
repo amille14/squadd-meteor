@@ -65,6 +65,18 @@ body {
   }
 }
 
+
+/*=== ANIMATIONS ===*/
+.flash-bg-appear {
+  background: fade-out($teal, 0.85);
+}
+
+.flash-bg-appear-active {
+  background: inherit;
+  @include transition($ease-out-all-1000);
+}
+
+
 /*=== UTIL ===*/
 *, *:before, *:after {
   -webkit-box-sizing: border-box; 

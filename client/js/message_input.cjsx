@@ -5,12 +5,16 @@
   shouldComponentUpdate: (nextProps, nextState) ->
     @state.height isnt nextState.height
 
+  componentDidUpdate: ->
+    @props.parent._updateMarginBottom $(@refs.messageInputContainer).outerHeight(), @justSubmitted
+    @justSubmitted = false
+
   render: ->
     props =
       style:
         height: @state.height
 
-    <div id="message-input-container">
+    <div id="message-input-container" ref="messageInputContainer">
       <form onSubmit={@_handleSubmit} ref="messageForm" id="message-input-form">
         <textarea id="message-input"
                   ref="messageInput"
@@ -28,11 +32,12 @@
     e?.preventDefault()
     text = @refs.messageInput.value?.trim()
     if text? and text isnt ""
-      Messages.insert
+      db.messages.insert
         text: text
         createdAt: new Date()
       @refs.messageInput.value = ""
       @setState {height: @getInitialState().height}
+      @justSubmitted = true
 
   _handleKeyPress: (e) ->
     if e.which is 13 and !e.shiftKey

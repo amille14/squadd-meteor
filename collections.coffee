@@ -1,1 +1,2 @@
-@Messages = new Mongo.Collection('messages')
+@db =
+  messages: new Mongo.Collection('messages')
