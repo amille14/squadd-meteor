@@ -1,5 +1,3 @@
-
-
 @MessagesContainer = React.createClass
   mixins: [ReactMeteorData]
 
@@ -16,16 +14,19 @@
   componentDidMount: ->
     @_scrollToBottom()
 
+
   componentWillUpdate: (nextProps, nextState) ->
     $el = $(@refs.messagesContainer)
     @shouldScrollBottom = ($el.scrollTop() + $el.prop('offsetHeight') is @_getScrollHeight()) or nextState.scrollToBottom
+    @setState(scrollToBottom: false)
 
   componentDidUpdate: ->
-    @_scrollToBottom() if @shouldScrollBottom
+    if @shouldScrollBottom
+      @_scrollToBottom()
 
   shouldComponentUpdate: (nextProps, nextState) ->
     @state.marginBottom isnt nextState.marginBottom or
-    @state.scrollTo isnt nextState.scrollTo
+    @state.scrollToBottom isnt nextState.scrollToBottom
 
   _scrollToBottom: ->
     $(@refs.messagesContainer).scrollTop @_getScrollHeight()
