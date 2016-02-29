@@ -29,3 +29,5 @@ johnantoni:meteor-normalize
 momentjs:moment
 konecty:autolinker
 chuangbo:marked
+accounts-password
+codetheweb:zxcvbn

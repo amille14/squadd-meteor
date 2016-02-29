@@ -1,3 +1,4 @@
+# Configure fonts to load with CORS issues
 fontRegExp = /\.(eot|ttf|otf|woff|woff2)$/
 WebApp.rawConnectHandlers.use '/', (req, res, next) ->
   if fontRegExp.test(req._parsedUrl.pathname)

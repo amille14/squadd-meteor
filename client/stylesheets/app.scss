@@ -38,10 +38,10 @@ body {
   }
 
   small, .small {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
     color: $blue-gray;
     margin: 0;
   }
@@ -56,11 +56,239 @@ body {
     }
   }
 
+  svg, svg path {
+    fill: currentColor;
+  }
+
   .number {
     font-size: 14px;
     font-weight: 900;
     letter-spacing: 0.1em;
     color: white;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  input[type="phone"] {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: $eau-douce;
+    outline: none !important;
+    color: $dark-gray;
+
+    &:focus, :active, :valid, :hover {
+      outline: none !important;
+    }
+
+    &, textarea {
+      &::-webkit-input-placeholder {
+        color: $blue-gray;
+        font-family: $eau-douce;
+        font-weight: 400;
+        opacity: 1.0;
+      }
+
+      &:-moz-placeholder {
+        color: $blue-gray;
+        font-family: $eau-douce;
+        font-weight: 400;
+        opacity: 1.0;
+      }
+
+      &::-moz-placeholder {
+        color: $blue-gray;
+        font-family: $eau-douce;
+        font-weight: 400;
+        opacity: 1.0;
+      }
+
+      &:-ms-input-placeholder {
+        color: $blue-gray;
+        font-family: $eau-douce;
+        font-weight: 400;
+        opacity: 1.0;
+      }
+    }
+  }
+
+  .card {
+    background: $white;
+    box-shadow: rgba(43, 59, 93, 0.3) 0px 1px 2px 0px;
+  }
+}
+
+
+/*=== BUTTONS ===*/
+button, .btn, .button {
+  color: white;
+  background: $teal;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: $eau-douce;
+  padding: 0.8em 1.6em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: none;
+  box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2);
+  @include border-radius(3px);
+  @include transition($ease-all-200);
+
+  &:hover {
+    box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
+    background: lighten($teal, 4%);
+    @include transition($ease-all-200);
+  }
+
+  &:focus {
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2), inset 0 0 0px 1px rgba(255, 255, 255, 0.6);
+    @include transition($ease-all-200);
+  }
+
+  &:active {
+    box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.15);
+    background: darken($teal, 4%);
+    @include transition($ease-all-200);
+  }
+}
+
+
+/*=== SQUADD LOGO ===*/
+.squadd-logo {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 36px;
+  color: $dark-gray;
+  transform-origin: top left;
+
+  .logo-icon {
+    font-size: inherit;
+    height: 1em;
+    width: 0.96em;
+    display: inline-block;
+    vertical-align: 0;
+  }
+
+  .logo-text {
+    font-size: inherit;
+    height: 0.916666667em;
+    display: inline-block;
+    vertical-align: 0.05em;
+    margin: 0.04em 0;
+  }
+
+  .logo-icon + .logo-text {
+    margin-left: 0.166667em;
+  }
+}
+
+
+/*=== FLOAT LABEL INPUT ===*/
+.float-label-input-group {
+  position: relative;
+  text-align: left;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+  input {
+    text-align: left;
+    width: 100%;
+    padding: 13px 0px 9px;
+    font-size: 16px;
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-bottom: 2px solid $blue-gray;
+    @include transition($ease-all-200);
+  }
+
+  label {
+    text-align: left;
+    width: 100%;
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    top: 11px;
+    left: 0;
+    font-size: 16px;
+    color: $blue-gray;
+    @include transition($ease-all-200);
+  }
+
+  input:focus, input:valid, input.filled {
+    @include transition($ease-all-200);
+
+    & ~ label {
+      font-size: 13px;
+      top: -3px;
+      @include transition($ease-all-200);
+    }
+  }
+
+  input:focus {
+    border-bottom: 2px solid $teal;
+
+    & ~ label {
+      color: $teal;
+    }
+  }
+
+  &.valid {
+    input:focus, input:valid, input.filled {
+      border-bottom: 2px solid $teal !important;
+
+      & ~ label {
+        color: $teal !important;
+      }
+    }
+  }
+
+  &.invalid {
+    input:focus, input:valid, input.filled {
+      border-bottom: 2px solid $orange !important;
+
+      & ~ label {
+        color: $orange !important;
+      }
+    }
+  }
+}
+
+/*=== PASSWORD SCORE BAR ===*/
+.password-score-bar {
+  width: 100%;
+  position: relative;
+
+  .score-bar {
+    display: inline-block;
+    width: 20%;
+    height: 4px;
+    opacity: 0;
+    @include transition($ease-all-300);
+
+    &.score-0 { background: $red }
+    &.score-1 { background: $orange }
+    &.score-2 { background: $yellow }
+    &.score-3 { background: $green }
+    &.score-4 { background: $teal }
+
+    &.active {
+      opacity: 1;
+      @include transition($ease-all-300);
+    }
   }
 }
 

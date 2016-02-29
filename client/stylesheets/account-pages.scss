@@ -1,0 +1,36 @@
+@import "util/mixins";
+@import "util/variables";
+
+#signup-page {
+  padding-top: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $white;
+
+  #login-form {
+    padding: 24px;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+
+    .squadd-logo {
+      margin-bottom: 24px;
+    }
+
+    .input-group {
+      width: 100%;
+    }
+
+    .password-score-bar {
+      margin-top: -19px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+    }
+  }
+}
