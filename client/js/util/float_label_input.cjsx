@@ -10,6 +10,9 @@
   getValue: ->
     @refs.input.value
 
+  shouldComponentUpdate: (nextProps, nextState) ->
+    !_.isEqual(@state, nextState) or !_.isEqual(@props, nextProps)
+
   _onChange: (e) ->
     @setState(filled: true) if @refs.input.value
 

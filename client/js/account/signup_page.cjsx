@@ -4,6 +4,20 @@
 
   _handleSubmit: (e) ->
     e.preventDefault()
+
+    if !@state.passwordValid
+      @setState error: "Password isn't strong enough"
+    else
+      Accounts.createUser {
+        username: @refs.usernameInput.getValue()
+        email: @refs.emailInput.getValue()
+        password: @refs.passwordInput.getValue()
+      }, (error) =>
+        if error?
+          @setState error: error.reason
+          console.log "ERROR", error
+        else
+          FlowRouter.go("/")
   
   _validateUsername: (e) ->
     username = @refs.usernameInput.getValue()
@@ -18,12 +32,19 @@
     @setState passwordValid: (score >= 2), passwordScore: score
     
   shouldComponentUpdate: (nextProps, nextState) ->
-    @state isnt nextState
+    !_.isEqual(@state, nextState)
+
+  _renderErrorMessage: ->
+    if @state.error
+      <div className="alert alert-error">
+        {@state.error}
+      </div>
 
   render: ->
     <div id="signup-page">
       <form id="login-form" ref="loginForm" onSubmit={@_handleSubmit}>
         <SquaddLogo includeIcon={true} includeText={true} fileType="svg" />
+        {@_renderErrorMessage()}
         <FloatLabelInput
           type="text"
           ref="usernameInput"
@@ -54,7 +75,6 @@
           onChange={@_validatePassword}
           isValid={@state.passwordValid} />
         
-
         <PasswordScoreBar score={@state.passwordScore} />
         <button type="submit">Sign up</button>
       </form>

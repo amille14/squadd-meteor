@@ -11,5 +11,5 @@
 @SidebarNav = React.createClass
   render: ->
     <div id="sidebar-nav" className="nav-group">
-      <img id="nav-logo" src="/images/squadd-logo-stroked-bw.png" />
+      <SquaddLogo />
     </div>

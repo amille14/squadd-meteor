@@ -1,7 +1,16 @@
+requireSignIn = (context, redirect) ->
+  redirect('/signup') unless Meteor.userId()?
+
 FlowRouter.route '/',
   name: 'app'
+  triggersEnter: [requireSignIn]
   action: ->
     ReactLayout.render App
+
+FlowRouter.route '/signup',
+  name: 'signup'
+  action: ->
+    ReactLayout.render SignupPage
 
 roomGroup = FlowRouter.group
   prefix: '/:roomName'
