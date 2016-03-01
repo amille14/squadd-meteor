@@ -14,7 +14,7 @@
     !_.isEqual(@state, nextState) or !_.isEqual(@props, nextProps)
 
   _onChange: (e) ->
-    @setState(filled: true) if @refs.input.value
+    @setState(filled: @refs.input.value)
 
   render: ->
     props = @destruct(@props, ["label", "isValid", "groupStyle", "onChange", "className"])

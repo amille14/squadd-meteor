@@ -14,16 +14,62 @@
   overflow-y: scroll;
 
   #messages {
+    margin-bottom: 18px;
+
     .message {
       position: relative;
-      margin: 6px 0;
-      padding: 0 80px 0 4px;
+      margin: 0px 0px 3px;
+      padding: 2px 80px 2px 50px;
       @include border-radius(3px);
 
+      &.first {
+        margin-top: 24px;
+
+        .message-time {
+          display: block;
+        }
+      }
+
+      &:hover {
+        background: lighten($light-gray, 9%);
+      }
+
+      &.not-first:hover {
+        .message-time {
+          display: block;
+        }
+      }
+
+      .message-username {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        line-height: 12px;
+        color: $mauve;
+        margin-top: 1px;
+      }
+
+      .message-photo {
+        position: absolute;
+        top: 0;
+        left: 4px;
+      }
+
+      .message-text {
+        h1, h2, h3, h4, h5, h6 {
+          color: $dark-gray;
+          margin: 0;
+          line-height: 1.43em;
+          text-transform: none;
+        }
+      }
+
       .message-time {
+        display: none;
         position: absolute;
         right: 4px;
-        top: 3px;
+        top: 1px;
       }
     }
   }

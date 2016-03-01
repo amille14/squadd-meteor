@@ -6,7 +6,7 @@
     e.preventDefault()
 
     if !@state.passwordValid
-      @setState error: "Password isn't strong enough"
+      @setState error: "Password isn't strong enough."
     else
       Accounts.createUser {
         username: @refs.usernameInput.getValue()
@@ -36,13 +36,13 @@
 
   _renderErrorMessage: ->
     if @state.error
-      <div className="alert alert-error">
+      <Alert type="error" style={marginBottom: 24}>
         {@state.error}
-      </div>
+      </Alert>
 
   render: ->
     <div id="signup-page">
-      <form id="login-form" ref="loginForm" onSubmit={@_handleSubmit}>
+      <form id="login-form" className="card" ref="loginForm" onSubmit={@_handleSubmit}>
         <SquaddLogo includeIcon={true} includeText={true} fileType="svg" />
         {@_renderErrorMessage()}
         <FloatLabelInput

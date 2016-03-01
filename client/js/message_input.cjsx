@@ -16,6 +16,14 @@
       db.messages.insert
         text: text
         createdAt: new Date()
+        user:
+          _id: Meteor.userId()
+          username: Meteor.user().username
+          profile:
+            firstName: Meteor.user().firstName
+            lastName: Meteor.user().lastName
+            photo: Meteor.user().photo
+
       @refs.messageInput.value = ""
       @setState {height: @getInitialState().height}
       @justSubmitted = true

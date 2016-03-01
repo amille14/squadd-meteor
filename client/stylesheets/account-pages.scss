@@ -9,10 +9,11 @@
   right: 0;
   bottom: 0;
   background: $white;
+  background-image: url("/images/geometry2.png"); /* Background pattern from subtlepatterns.com */
 
   #login-form {
-    padding: 24px;
-    width: 300px;
+    padding: 36px;
+    width: 324px;
     margin: auto;
     text-align: center;
 

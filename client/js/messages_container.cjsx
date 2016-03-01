@@ -7,13 +7,14 @@
     {marginBottom: 69, scrollToBottom: true}
 
   getMeteorData: ->
+    messages = db.messages.find({}, {sort: {createdAt: 1}})
+
     return {
-      messages: db.messages.find({}).fetch()
+      messages: messages.fetch()
     }
 
   componentDidMount: ->
     @_scrollToBottom()
-
 
   componentWillUpdate: (nextProps, nextState) ->
     $el = $(@refs.messagesContainer)
@@ -40,10 +41,14 @@
   _getScrollHeight: -> $(@refs.messagesContainer).prop("scrollHeight")
 
   _renderMessages: ->
+    prev = null
     @data.messages.map (message) =>
+      isFirst = prev?.user?._id isnt message.user?._id
+      prev = message
       <TransitionFlashBG key={message._id}>
-        <Message key={message._id} text={message.text} time={message.createdAt} />
+        <Message key={message._id} text={message.text} time={message.createdAt} username={message.user?.username} isFirst={isFirst} />
       </TransitionFlashBG>
+
 
   render: ->
     props =

@@ -56,6 +56,14 @@ body {
     }
   }
 
+  ul, ol {
+    padding-left: 1em;
+
+    li {
+      line-height: 23px;
+    }
+  }
+
   svg, svg path {
     fill: currentColor;
   }
@@ -125,7 +133,36 @@ body {
 
   .card {
     background: $white;
-    box-shadow: rgba(43, 59, 93, 0.3) 0px 1px 2px 0px;
+    box-shadow: rgba(43, 59, 93, 0.3) 0px 1px 4px 0px;
+    @include border-radius(6px);
+  }
+
+  .alert {
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: $orange;
+    border: 1px solid;
+    border-left: 4px solid;
+    border-color: currentColor;
+    background: fade-out($orange, 0.76);
+
+    &.alert-warning {
+      color: $orange;
+      background: fade-out($orange, 0.76);
+    }
+
+    &.alert-error {
+      color: $red;
+      background: fade-out($red, 0.76);
+    }
+
+    &.alert-success {
+      color: $teal;
+      background: fade-out($teal, 0.76);
+    }
   }
 }
 
@@ -134,10 +171,12 @@ body {
 button, .btn, .button {
   color: white;
   background: $teal;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   font-family: $eau-douce;
-  padding: 0.8em 1.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1.0em 1.6em 0.9em;
   border: 1px solid rgba(0, 0, 0, 0.15);
   outline: none;
   box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2);
@@ -151,7 +190,7 @@ button, .btn, .button {
   }
 
   &:focus {
-    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2), inset 0 0 0px 1px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2), inset 0 0 0px 1px rgba(255, 255, 255, 0.8);
     @include transition($ease-all-200);
   }
 
@@ -223,8 +262,13 @@ button, .btn, .button {
     position: absolute;
     top: 11px;
     left: 0;
-    font-size: 16px;
+
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: $blue-gray;
+
     @include transition($ease-all-200);
   }
 
@@ -232,7 +276,7 @@ button, .btn, .button {
     @include transition($ease-all-200);
 
     & ~ label {
-      font-size: 13px;
+      font-size: 12px;
       top: -3px;
       @include transition($ease-all-200);
     }
@@ -265,6 +309,15 @@ button, .btn, .button {
       }
     }
   }
+}
+
+/*== USER PHOTO ===*/
+.user-photo {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background: $teal;
+  @include border-radius(50%);
 }
 
 /*=== PASSWORD SCORE BAR ===*/
