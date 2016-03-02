@@ -43,7 +43,7 @@
   _renderMessages: ->
     prev = null
     @data.messages.map (message) =>
-      isFirst = prev?.user?._id isnt message.user?._id
+      isFirst = prev?.user?._id isnt message.user?._id or moment(prev?.createdAt).diff(moment(message.createdAt), 'minutes') <= -10
       prev = message
       <TransitionFlashBG key={message._id}>
         <Message key={message._id} text={message.text} time={message.createdAt} username={message.user?.username} isFirst={isFirst} />

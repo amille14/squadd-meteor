@@ -3,11 +3,14 @@ Accounts.config
   sendVerificationEmail: true
   loginExpirationInDays: 60
 
-# Validate username length
+# Validate username
 Accounts.validateNewUser (newUser) ->
-  if newUser.username?.length >= 3
-    return true
-  throw new Meteor.Error(403, "Username must have at least 3 characters.", newUser)
+  return true if newUser.username?.length >= 3 and newUser.username?.length <= 30
+  throw new Meteor.Error(403, "Username must be 3 to 30 characters long.", newUser)
+
+Accounts.validateNewUser (newUser) ->
+  return true if newUser.username?.match(/^[A-Za-z0-9_]+$/)
+  throw new Meteor.Error(403, "Username can only contain letters, numbers, and underscores.", newUser)
 
 # Validate password
 Accounts.validateNewUser (newUser) ->
