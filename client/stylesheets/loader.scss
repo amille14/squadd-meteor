@@ -1,0 +1,70 @@
+@import "util/variables";
+@import "util/mixins";
+
+.loader {
+  display: inline-block;
+  font-size: 12px;
+  width: 6em;
+  position: relative;
+  
+  .ball {
+    position: absolute;
+    height: 1em;
+    width: 1em;
+    background-color: $dark-gray;
+    @include border-radius(100%);
+    @include animation(loader 3.0s infinite ease-in-out both);
+    
+    &:first-child {
+      background-color: $teal;
+      animation-delay: 0.5s;
+    }
+    
+    &:nth-child(2) {
+      background-color: $blue;
+      animation-delay: 0.4s;
+    }
+    
+    &:nth-child(3) {
+      background-color: $purple;
+      animation-delay: 0.3s;
+    }
+    
+    &:nth-child(4) {
+      background-color: $mauve;
+      animation-delay: 0.2s;
+    }
+    
+    &:nth-child(5) {
+      background-color: $red;
+      animation-delay: 0.1s;
+   }
+    
+    &:nth-child(6) {
+      background-color: $yellow;
+      animation-delay: 0s;
+    }
+  }
+}
+    
+@keyframes loader {
+  0% {
+    @include transform(translate(0, 0));
+  }
+  
+  25% { 
+    @include transform(translate(6em - 1em, 0.5em));
+  }
+
+  50% {
+    @include transform(translate(0, 0));
+  }
+
+  75% {
+    @include transform(translate(6em - 1em, -0.5em));
+  }
+  
+  100% {
+    @include transform(translate(0, 0));
+  }
+}

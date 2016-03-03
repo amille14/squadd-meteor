@@ -1,17 +1,8 @@
 @import "util/mixins";
 @import "util/variables";
 
-#signup-page {
-  padding-top: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: $white;
-  background-image: url("/images/geometry2.png"); /* Background pattern from subtlepatterns.com */
-
-  #login-form {
+#signup-card {
+  #signup-form {
     padding: 36px;
     width: 324px;
     margin: auto;

@@ -1,29 +1,43 @@
-requireSignIn = (context, redirect) ->
+#=== METHODS ===
+requireLogIn = (context, redirect) ->
   redirect('/signup') unless Meteor.userId()?
 
-FlowRouter.route '/',
-  name: 'app'
-  triggersEnter: [requireSignIn]
-  action: ->
-    ReactLayout.render App
 
-FlowRouter.route '/signup',
+
+#=== PUBLIC ROUTES ===
+publicRoutes = FlowRouter.group(name: 'public')
+
+publicRoutes.route '/login',
+  name: 'login'
+  action: ->
+    ReactLayout.render App, yield: <LoginCard />
+
+publicRoutes.route '/signup',
   name: 'signup'
   action: ->
-    ReactLayout.render SignupPage
+    ReactLayout.render App, yield: <SignupCard />
 
-roomGroup = FlowRouter.group
-  prefix: '/:roomName'
-  name: 'room'
 
-roomGroup.route '/',
-  action: (params, queryParams) ->
-    # TODO:
-    # If params.roomName matches an existing room name, render that room
-    # Otherwise redirect to general room
 
-roomGroup.route '/posts/:postId',
-  action: (params, queryParams) ->
-    # TODO:
-    # If post with this id exists within this room, render post
-    # Otherwise redirect to room
+#=== AUTHENTICATED ROUTES ===
+authenticatedRoutes = FlowRouter.group(name: 'authenticated')
+
+authenticatedRoutes.route '/',
+  name: 'app'
+  triggersEnter: [requireLogIn]
+  action: ->
+    ReactLayout.render App, yield: <ChatLayout />
+
+
+
+#=== HELPERS ===
+pathFor = (path, params) =>
+  query = if params and params.query then FlowRouter._qs.parse(params.query) else {}
+  return FlowRouter.path(path, params, query)
+
+urlFor = (path, params) =>
+  return Meteor.absoluteUrl pathFor(path, params)
+
+@FlowHelpers =
+  pathFor: pathFor
+  urlFor: urlFor

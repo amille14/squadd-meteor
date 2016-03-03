@@ -1,4 +1,4 @@
-@SignupPage = React.createClass
+@SignupCard = React.createClass
   getInitialState: ->
     {usernameValid: true, emailValid: true, passwordValid: true, passwordScore: -1}
 
@@ -41,8 +41,8 @@
       </Alert>
 
   render: ->
-    <div id="signup-page">
-      <form id="login-form" className="card" ref="loginForm" onSubmit={@_handleSubmit}>
+    <div id="signup-card">
+      <form id="signup-form" className="card" ref="signupForm" onSubmit={@_handleSubmit}>
         <SquaddLogo includeIcon={true} includeText={true} fileType="svg" />
         {@_renderErrorMessage()}
         <FloatLabelInput
