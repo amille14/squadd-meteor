@@ -262,6 +262,7 @@ button, .btn, .button {
     border: none;
     border-bottom: 2px solid $blue-gray;
     @include transition($ease-all-200);
+    @include border-radius(0);
   }
 
   label {
@@ -351,6 +352,18 @@ button, .btn, .button {
     &.active {
       opacity: 1;
       @include transition($ease-all-300);
+    }
+  }
+
+  .password-score-text {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: $red;
+
+    &.good {
+      color: $teal;
     }
   }
 }

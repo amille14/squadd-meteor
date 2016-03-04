@@ -8,7 +8,8 @@
 
   render: ->
     <div id="app">
-    { if true #@data.loggingIn
+    {
+      if @data.loggingIn
         <div className="centered">
           <Loader />
         </div>
