@@ -1,28 +1,37 @@
 @import "util/mixins";
 @import "util/variables";
 
-#signup-card {
-  #signup-form {
-    padding: 36px;
-    width: 324px;
-    margin: auto;
-    text-align: center;
+#signup-card, #login-card {
+  padding: 36px;
+  padding-bottom: 28px;
+  width: 324px;
+  margin: 140px auto 70px;
+  text-align: center;
 
-    .squadd-logo {
-      margin-bottom: 24px;
-    }
+  .squadd-logo {
+    margin-bottom: 24px;
+  }
+}
 
-    .input-group {
-      width: 100%;
-    }
+#signup-form, #login-form {
+  margin-bottom: 16px;
 
-    .password-score-bar {
-      margin-top: -19px;
-    }
+  .input-group {
+    width: 100%;
+  }
 
-    button {
-      width: 100%;
-      margin-top: 24px;
-    }
+  button {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+#signup-form {
+  #password-input {
+    padding-right: 40px;
+  }
+
+  .password-score-bar {
+    margin-top: -19px;
   }
 }

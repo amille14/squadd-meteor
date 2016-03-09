@@ -1,13 +1,27 @@
 @MessageInput = React.createClass
   getInitialState: ->
-    {height: 42}
+    {height: 42, justSubmitted: false}
 
   shouldComponentUpdate: (nextProps, nextState) ->
-    @state.height isnt nextState.height
+    !_.isEqual(@state, nextState)
 
   componentDidUpdate: ->
-    @props.parent._updateMarginBottom $(@refs.messageInputContainer).outerHeight(), @justSubmitted
-    @justSubmitted = false
+    p = @props.parent
+
+    # Reset to original margin bottom after submit
+    if @state.justSubmitted
+      p.setMarginBottom p.getInitialState().marginBottom
+      p.scrollToBottom()
+
+    # Update margin bottom of parent to accomodate for height of input container
+    else
+      p.setMarginBottom $(@refs.messageInputContainer).outerHeight()
+
+    @setState justSubmitted: false
+
+
+    # @props.parent._updateMarginBottom $(@refs.messageInputContainer).outerHeight(), @justSubmitted
+    # @justSubmitted = false
 
   _handleSubmit: (e) ->
     e?.preventDefault()
@@ -19,14 +33,10 @@
         user:
           _id: Meteor.userId()
           username: Meteor.user().username
-          profile:
-            firstName: Meteor.user().firstName
-            lastName: Meteor.user().lastName
-            photo: Meteor.user().photo
 
       @refs.messageInput.value = ""
-      @setState {height: @getInitialState().height}
-      @justSubmitted = true
+      @setState {height: @getInitialState().height, justSubmitted: true}
+      
 
   _handleKeyPress: (e) ->
     if e.which is 13 and !e.shiftKey

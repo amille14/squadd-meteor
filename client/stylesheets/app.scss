@@ -38,11 +38,10 @@ body {
   }
 
   small, .small {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0.04em;
-    color: $blue-gray;
+    letter-spacing: 0.01em;
     margin: 0;
   }
 
@@ -73,6 +72,10 @@ body {
     font-weight: 900;
     letter-spacing: 0.1em;
     color: white;
+  }
+
+  .muted {
+    color: $blue-gray;
   }
 
   input[type="text"],
@@ -186,7 +189,7 @@ button, .btn, .button {
   font-family: $eau-douce;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  padding: 1.0em 1.6em 0.9em;
+  padding: 1.1em 1.6em 0.8em;
   border: 1px solid rgba(0, 0, 0, 0.15);
   outline: none;
   box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.2);
@@ -255,7 +258,7 @@ button, .btn, .button {
   input {
     text-align: left;
     width: 100%;
-    padding: 13px 0px 9px;
+    padding: 16px 0px 8px;
     font-size: 16px;
     background: none;
     box-shadow: none;
@@ -277,7 +280,7 @@ button, .btn, .button {
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     color: $blue-gray;
 
     @include transition($ease-all-200);
@@ -322,8 +325,8 @@ button, .btn, .button {
   }
 }
 
-/*== USER PHOTO ===*/
-.user-photo {
+/*== USER AVATAR ===*/
+.user-avatar {
   display: inline-block;
   width: 36px;
   height: 36px;
@@ -356,11 +359,14 @@ button, .btn, .button {
   }
 
   .password-score-text {
-    margin-top: 8px;
+    position: absolute;
+    top: -20px;
+    right: 0;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.02em;
-    color: $red;
+    letter-spacing: 0.01em;
+    color: $orange;
+    text-align: right;
 
     &.good {
       color: $teal;

@@ -41,9 +41,9 @@
       </Alert>
 
   render: ->
-    <div id="signup-card">
-      <form id="signup-form" className="card" ref="signupForm" onSubmit={@_handleSubmit}>
-        <SquaddLogo includeIcon={true} includeText={true} fileType="svg" />
+    <div id="signup-card" className="card">
+      <SquaddLogo includeIcon={true} includeText={true} fileType="svg" />
+      <form id="signup-form" ref="signupForm" onSubmit={@_handleSubmit}>
         {@_renderErrorMessage()}
         <FloatLabelInput
           type="text"
@@ -78,4 +78,5 @@
         <PasswordScoreBar score={@state.passwordScore} />
         <button type="submit">Sign up</button>
       </form>
+      <a href="/login" className="small">Already have an account? Log in</a>
     </div>
