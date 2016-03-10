@@ -6,7 +6,7 @@
     e.preventDefault()
 
     if !@state.passwordValid
-      @setState error: "Password isn't strong enough."
+      @setState error: "Password is too weak."
     else
       Accounts.createUser {
         username: @refs.usernameInput.getValue()
