@@ -7,15 +7,17 @@
 
   componentDidUpdate: ->
     p = @props.parent
+    m = @props.parent.refs.messages
 
     # Reset to original margin bottom after submit
     if @state.justSubmitted
       p.setMarginBottom p.getInitialState().marginBottom
-      p.scrollToBottom()
+      m.setState shouldScrollBottom: true
 
     # Update margin bottom of parent to accomodate for height of input container
     else
       p.setMarginBottom $(@refs.messageInputContainer).outerHeight()
+      m.forceUpdate()
 
     @setState justSubmitted: false
 
@@ -59,6 +61,7 @@
     @setState({height: newHeight})
 
   render: ->
+    console.log "RENDERED INPUT"
     props =
       style:
         height: @state.height

@@ -42,9 +42,9 @@
     @setState marginBottom: marginBottom
     $(@refs.messagesContainer).css "margin-bottom": marginBottom
 
-  scrollToBottom: ->
-    console.log "SCROLL TO BOTTOM", $(@refs.messagesContainer).prop("scrollHeight")
-    $(@refs.messagesContainer).scrollTop $(@refs.messagesContainer).prop("scrollHeight")
+  # scrollToBottom: ->
+  #   console.log "SCROLL TO BOTTOM", $(@refs.messagesContainer).prop("scrollHeight")
+  #   $(@refs.messagesContainer).scrollTop $(@refs.messagesContainer).prop("scrollHeight")
 
   shouldComponentUpdate: (nextProps, nextState) ->
     !_.isEqual(@props, nextProps)
@@ -67,8 +67,8 @@
 @Messages = React.createClass
   mixins: [ReactMeteorData]
 
-  # getInitialState: ->
-  #   shouldScrollBottom: true
+  getInitialState: ->
+    shouldScrollBottom: true
 
   getMeteorData: ->
     messages = db.messages.find({}, {sort: {createdAt: 1}})
@@ -78,19 +78,25 @@
     }
 
 
-  # #=== LIFECYCLE ===
-  # componentWillUpdate: (np, ns) ->
-  #   $el = $(@refs.messages)
-  #   @shouldScrollBottom = $el.scrollTop() + $el.prop("offsetHeight") is @_getScrollHeight() or nextState.shouldScrollBottom
-  #   @setState(shouldScrollBottom: false)
+  #=== LIFECYCLE ===
+  componentDidMount: ->
+    @_scrollToBottom()
 
-  # componentDidUpdate: ->
-  #   @_scrollToBottom() if @shouldScrollBottom
+  shouldComponentUpdate: (np, ns) ->
+    @state.shouldScrollBottom isnt ns.shouldScrollBottom and ns.shouldScrollBottom is true
 
-  # _scrollToBottom: ->
-  #   $(@refs.messages).scrollTop @_getScrollHeight()
+  componentWillUpdate: (np, ns) ->
+    $el = $(@refs.messages)
+    @shouldScrollBottom = @_getScrollHeight() - ($el.scrollTop() + $el.prop("offsetHeight")) <= 25 or ns.shouldScrollBottom
 
-  # _getScrollHeight: -> $(@refs.messages).prop("scrollHeight")
+  componentDidUpdate: ->
+    @_scrollToBottom() if @shouldScrollBottom
+    @setState(shouldScrollBottom: false)
+
+  _scrollToBottom: ->
+    $(@refs.messages).scrollTop @_getScrollHeight()
+
+  _getScrollHeight: -> $(@refs.messages).prop("scrollHeight")
 
 
   #=== RENDERING ===
@@ -107,6 +113,6 @@
       return component
 
   render: ->
-    console.log "RENDER MESSAGES"
+    console.log "RENDERED MESSAGES"
     <div id="messages" ref="messages">{@_renderMessages()}</div>
 
