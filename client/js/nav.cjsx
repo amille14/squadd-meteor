@@ -5,7 +5,9 @@
       <div className="nav-group pull-left">
         {!<h4>The Nerd Brigade</h4>}
       </div>
-      <div id="nav-menu" className="nav-group"></div>
+      <div id="nav-menu" className="nav-group">
+        <a href="/logout">Log out</a>
+      </div>
     </div>
 
 @SidebarNav = React.createClass

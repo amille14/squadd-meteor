@@ -10,7 +10,7 @@
     <div id="app">
     {
       if @data.loggingIn
-        <div className="centered">
+        <div className="centered" style={marginTop: 240}>
           <Loader />
         </div>
 

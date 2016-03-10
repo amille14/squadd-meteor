@@ -1,9 +1,3 @@
-#=== METHODS ===
-requireLogIn = (context, redirect) ->
-  redirect('/signup') unless Meteor.userId()?
-
-
-
 #=== PUBLIC ROUTES ===
 publicRoutes = FlowRouter.group(name: 'public')
 
@@ -17,17 +11,35 @@ publicRoutes.route '/signup',
   action: ->
     ReactLayout.render App, yield: <SignupCard />
 
+publicRoutes.route '/logout',
+  name: 'logout'
+  action: ->
+    Meteor.logout ->
+      FlowRouter.go FlowRouter.path('login')
 
 
 #=== AUTHENTICATED ROUTES ===
-authenticatedRoutes = FlowRouter.group(name: 'authenticated')
+authenticatedRoutes = FlowRouter.group
+  name: 'authenticated'
+  triggersEnter: [(context, redirect) ->
+    unless Meteor.loggingIn() or Meteor.userId()
+      current = FlowRouter.current()
+
+      # Save the route the user wanted to go to and redirect there after they log in
+      Session.set 'redirectAfterLogin', current.path unless current.route.name in ['login', 'signup', 'logout']
+      FlowRouter.go 'login'
+  ]
 
 authenticatedRoutes.route '/',
   name: 'app'
-  triggersEnter: [requireLogIn]
   action: ->
     ReactLayout.render App, yield: <ChatLayout />
 
+
+#=== 404 NOT FOUND ===
+FlowRouter.notFound =
+  action: ->
+    ReactLayout.render App, yield: <NotFound404 />
 
 
 #=== HELPERS ===

@@ -39,10 +39,11 @@ body {
   }
 
   small, .small {
+    font-family: $source-sans;
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     margin: 0;
   }
 
@@ -171,6 +172,11 @@ body {
       color: $teal;
       background: fade-out($teal, 0.76);
     }
+  }
+
+  .centered {
+    margin: auto;
+    text-align: center;
   }
 }
 

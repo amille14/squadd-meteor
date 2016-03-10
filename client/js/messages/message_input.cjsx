@@ -1,6 +1,6 @@
 @MessageInput = React.createClass
   getInitialState: ->
-    {height: 42, justSubmitted: false}
+    {height: 24, justSubmitted: false}
 
   #=== LIFECYCLE ===
   shouldComponentUpdate: (nextProps, nextState) ->
@@ -46,14 +46,14 @@
 
   _updateHeight: ->
     MAX_HEIGHT = 164
-    LINE_HEIGHT = 18
+    LINE_HEIGHT = 20
 
     # Funky hack to calculate scrollHeight:
     # Need to first set height to 0 in order to get the correct value of scrollHeight after a backspace.
     # Then need to set the new height.
     $(@refs.messageInput).css(height: 0)
     scrollHeight = @refs.messageInput.scrollHeight
-    h = (scrollHeight - (scrollHeight % LINE_HEIGHT)) + 6   
+    h = (scrollHeight - (scrollHeight % LINE_HEIGHT)) + 4 
     newHeight = Math.min(h, MAX_HEIGHT)
 
     $(@refs.messageInput).css(height: newHeight) 

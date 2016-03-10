@@ -78,6 +78,7 @@
         right: 4px;
         top: 1px;
         font-size: 12px;
+        font-family: $eau-douce;
         color: $blue-gray;
       }
     }
@@ -115,10 +116,10 @@
   background: $white;
 
   #message-input {
-    box-sizing: padding-box;
-    width: 100%;
+    box-sizing: content-box;
+    width: calc(100% - 24px);
     padding: 10px 10px 8px;
-    line-height: 18px;
+    line-height: 20px;
     resize: none !important;
     -webkit-appearance: none;
     overflow-y: auto;
