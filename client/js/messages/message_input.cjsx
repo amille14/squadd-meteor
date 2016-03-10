@@ -2,6 +2,7 @@
   getInitialState: ->
     {height: 42, justSubmitted: false}
 
+  #=== LIFECYCLE ===
   shouldComponentUpdate: (nextProps, nextState) ->
     !_.isEqual(@state, nextState)
 
@@ -22,9 +23,7 @@
     @setState justSubmitted: false
 
 
-    # @props.parent._updateMarginBottom $(@refs.messageInputContainer).outerHeight(), @justSubmitted
-    # @justSubmitted = false
-
+  #=== CALLBACKS ===
   _handleSubmit: (e) ->
     e?.preventDefault()
     text = @refs.messageInput.value?.trim()
@@ -60,6 +59,8 @@
     $(@refs.messageInput).css(height: newHeight) 
     @setState({height: newHeight})
 
+
+  #=== RENDERING ===
   render: ->
     console.log "RENDERED INPUT"
     props =
