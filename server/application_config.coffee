@@ -14,4 +14,4 @@ Meteor.startup ->
   Kadira.connect Meteor.settings.KADIRA_APP_ID, Meteor.settings.KADIRA_APP_SECRET
 
   # Configure Mailgun
-  process.env.MAIL_URL = "smtp://postmaster@" + Meteor.settings.MAILGUN_EMAIL + ".mailgun.org:password@smtp.mailgun.org:" + Meteor.settings.MAILGUN_PASSWORD
+  process.env.MAIL_URL = "smtp://postmaster%40" + Meteor.settings.MAILGUN_EMAIL + ":" + Meteor.settings.MAILGUN_PASSWORD + "@smtp.mailgun.org:587"
