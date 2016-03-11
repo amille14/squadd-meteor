@@ -42,6 +42,6 @@
     <div className={className} {...props._other}>
       {<div className="message-photo user-avatar"></div> if isFirst}
       {<div className="message-username">{m.user?.username}</div> if isFirst}
-      <div className="message-text">{@_renderText(m.text)}</div>
+      <div className="message-text-container">{@_renderText(m.text)}</div>
       <small className="message-time">{moment(m.createdAt).format("h:mm a")}</small>
     </div>

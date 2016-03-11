@@ -37,12 +37,20 @@
 
       @refs.messageInput.value = ""
       @setState {height: @getInitialState().height, justSubmitted: true}
-      
 
   _handleKeyPress: (e) ->
-    if e.which is 13 and !e.shiftKey
+    if e.which is 13 and !e.shiftKey  # Submit when enter key is pressed
       e.preventDefault()
       @_handleSubmit()
+
+  _handleKeyDown: (e) ->
+    # TODO: Do something when up arrow key is pressed
+    # if e.which is 38 and @refs.messageInput.value is "" or !@refs.messageInput.value?
+
+  _handleChange: (e) ->
+    MAX_LENGTH = 5000
+    @refs.messageInput.value = @refs.messageInput.value.substring(0, MAX_LENGTH)
+    @_updateHeight()
 
   _updateHeight: ->
     MAX_HEIGHT = 164
@@ -71,8 +79,9 @@
       <form onSubmit={@_handleSubmit} ref="messageForm" id="message-input-form">
         <textarea id="message-input"
                   ref="messageInput"
-                  onChange={@_updateHeight}
+                  onChange={@_handleChange}
                   onKeyPress={@_handleKeyPress}
+                  onKeyDown={@_handleKeyDown}
                   autoCorrect="off"
                   autoComplete="off"
                   spellCheck="true"
