@@ -3,6 +3,9 @@ publicRoutes = FlowRouter.group(name: 'public')
 
 publicRoutes.route '/login',
   name: 'login'
+  triggersEnter: [(context, redirect) ->
+    redirect('app') if Meteor.userId()
+  ]
   action: ->
     ReactLayout.render App, yield: <LoginCard />
 

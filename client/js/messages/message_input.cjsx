@@ -29,11 +29,9 @@
     text = @refs.messageInput.value?.trim()
     if text? and text isnt ""
       db.messages.insert
-        text: text
+        content: text
         createdAt: new Date()
-        user:
-          _id: Meteor.userId()
-          username: Meteor.user().username
+        userId: Meteor.userId()
 
       @refs.messageInput.value = ""
       @setState {height: @getInitialState().height, justSubmitted: true}
