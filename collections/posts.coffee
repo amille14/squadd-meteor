@@ -1,11 +1,11 @@
-Posts = new Mongo.Collection "posts"
+@db.Posts = new Mongo.Collection "posts"
 
-Posts.allow
+@db.Posts.allow
   insert: -> false
   update: -> false
   remove: -> false
 
-Posts.deny
+@db.Posts.deny
   insert: -> true
   update: -> true
   remove: -> true
@@ -47,5 +47,5 @@ PostsSchema = new SimpleSchema
     label: "A list of user ids who can view this post"
     optional: true
 
-Posts.attachSchema @UtilSchemas.Timestamps
-Posts.attachSchema PostsSchema
+@db.Posts.attachSchema @UtilSchemas.Timestamps
+@db.Posts.attachSchema PostsSchema

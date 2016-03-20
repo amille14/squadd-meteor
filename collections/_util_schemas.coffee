@@ -8,4 +8,5 @@
     updatedAt:
       type: Date
       label: "The date and time this was last updated at"
+      optional: true
       autoValue: -> return new Date if @isUpdate

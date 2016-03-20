@@ -3,7 +3,7 @@
 
   _renderText: (text) ->
     # Split multi-line comments so each line can be rendered separately
-    lines = text?.split(new RegExp('\r?\n','g')) ? ""
+    lines = text?.split(new RegExp('\r?\n','g')) ? []
 
     # Automatically add links (see https://github.com/gregjacobs/Autolinker.js)
     autolinker = new Autolinker
@@ -31,10 +31,12 @@
     prev = props.prevMessage
 
     # Message is the first of its group (i.e. we should append username/avatar) if previous
-    # message's user is different or last message from the same user was greater than 10 minutes ago.
+    # message's user is different or last message from the same user was greater than 8 minutes ago.
     if prev?
       isFirst = prev.user?._id isnt m.user?._id or
-                moment(prev.createdAt).diff(moment(m.createdAt), 'minutes') <= -10
+                moment(prev.createdAt).diff(moment(m.createdAt), 'minutes') <= -8
+    else
+      isFirst = true
 
     className = "message clearfix"
     className += " first" if isFirst

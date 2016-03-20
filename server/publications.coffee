@@ -1,7 +1,12 @@
-Meteor.publish "room", (roomId) =>
+Meteor.publishComposite "roomMessages", (roomId) ->
+  find: -> db.Rooms.find({_id: roomId}, {limit: 1})
 
-  #TODO: Fetch a specific room and its messages based on roomId
+  # Messages
+  children: [
+    find: (room) -> db.Messages.find({roomId: room._id}, {sort: {createdAt: 1}})
 
-  console.log "PUBLISH"
-
-  return @db.Messages.find({}, {sort: {createdAt: 1}})
+    # Users
+    children: [
+      find: (message, room) -> Meteor.users.find({_id: message.userId}, {limit: 1})
+    ]
+  ]

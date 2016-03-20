@@ -28,7 +28,7 @@
     e?.preventDefault()
     text = @refs.messageInput.value?.trim()
     if text? and text isnt ""
-      Meteor.call "insertMessage", text
+      Meteor.call "insertMessage", text, Session.get("currentRoomId")
       @refs.messageInput.value = ""
       @setState {height: @getInitialState().height, justSubmitted: true}
 

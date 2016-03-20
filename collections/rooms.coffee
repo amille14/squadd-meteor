@@ -1,13 +1,13 @@
-Rooms = new Mongo.Collection "rooms"
+@db.Rooms = new Mongo.Collection "rooms"
 
 # Disable insert, update, and remove on the client.
 # Must use meteor methods on server to handle all operations for security purposes.
-Rooms.allow
+@db.Rooms.allow
   insert: -> false
   update: -> false
   remove: -> false
 
-Rooms.deny
+@db.Rooms.deny
   insert: -> true
   update: -> true
   remove: -> true
@@ -32,6 +32,7 @@ RoomsSchema = new SimpleSchema
     type: String
     label: "The description of this room"
     max: 140
+    optional: true
 
-Rooms.attachSchema @UtilSchemas.Timestamps
-Rooms.attachSchema RoomsSchema
+@db.Rooms.attachSchema @UtilSchemas.Timestamps
+@db.Rooms.attachSchema RoomsSchema

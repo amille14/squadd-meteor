@@ -1,11 +1,11 @@
-Squadds = new Mongo.Collection "squadds"
+@db.Squadds = new Mongo.Collection "squadds"
 
-Squadds.allow
+@db.Squadds.allow
   insert: -> false
   update: -> false
   remove: -> false
 
-Squadds.deny
+@db.Squadds.deny
   insert: -> true
   update: -> true
   remove: -> true
@@ -17,5 +17,5 @@ SquaddsSchema = new SimpleSchema
     label: "The name of this squadd"
     max: 30
 
-Squadds.attachSchema @UtilSchemas.Timestamps
-Squadds.attachSchema SquaddsSchema
+@db.Squadds.attachSchema @UtilSchemas.Timestamps
+@db.Squadds.attachSchema SquaddsSchema

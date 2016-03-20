@@ -36,6 +36,7 @@ authenticatedRoutes = FlowRouter.group
 authenticatedRoutes.route '/',
   name: 'app'
   action: ->
+    Session.set "currentRoomId", "ELag6W7uwLdRbB38k"
     ReactLayout.render App, yield: <ChatLayout />
 
 

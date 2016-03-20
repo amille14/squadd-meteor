@@ -30,8 +30,8 @@
     shouldScrollBottom: true
 
   getMeteorData: ->
-    subHandle = Meteor.subscribe("room", "someID") #TODO: Subscribe to a particular room id
-    messages = db.Messages.find({}, {sort: {createdAt: 1}})
+    subHandle = Meteor.subscribe("roomMessages", Session.get("currentRoomId"))
+    messages = db.Messages.find({roomId: Session.get("currentRoomId")}, {sort: {createdAt: 1}})
 
     return {
       ready: subHandle.ready()
@@ -64,6 +64,7 @@
   _renderMessages: ->
     prev = null
     @data.messages.map (message) =>
+      message.user = @_getUser(message)
       component =
         <TransitionFlashBG key={message._id}>
           { <DateDivider date={message.createdAt} /> if prev? and !moment(prev.createdAt).isSame(moment(message.createdAt), 'day') }
@@ -72,6 +73,9 @@
 
       prev = message
       return component
+
+  _getUser: (message) ->
+    Meteor.users.findOne({_id: message.userId})
 
   render: ->
     console.log "RENDERED MESSAGES"
