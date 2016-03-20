@@ -10,6 +10,11 @@ Meteor.startup ->
       res.setHeader 'Cache-Control', '"public"'
     next()
 
+  # Configure browser policy
+  # TODO: Add back the browser-policy package
+  # BrowserPolicy.content.allowFontOrigin "fonts.googleapis.com"
+  # BrowserPolicy.content.allowStyleOrigin "fonts.googleapis.com"
+
   # Configure Kadira
   Kadira.connect Meteor.settings.KADIRA_APP_ID, Meteor.settings.KADIRA_APP_SECRET
 

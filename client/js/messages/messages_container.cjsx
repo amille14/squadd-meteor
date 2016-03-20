@@ -30,9 +30,11 @@
     shouldScrollBottom: true
 
   getMeteorData: ->
-    messages = db.messages.find({}, {sort: {createdAt: 1}})
+    subHandle = Meteor.subscribe("room", "someID") #TODO: Subscribe to a particular room id
+    messages = db.Messages.find({}, {sort: {createdAt: 1}})
 
     return {
+      ready: subHandle.ready()
       messages: messages.fetch()
     }
 

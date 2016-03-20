@@ -8,6 +8,8 @@ Meteor.users.deny
   update: -> true
   remove: -> true
 
+Schema = {}
+
 Schema.UserCountry = new SimpleSchema
   name:
     type: String
@@ -80,20 +82,19 @@ Schema.User = new SimpleSchema
   #=== ATTRIBUTES ===
   username:
     type: String
-    unique: true
-    regEx: /^[a-z0-9]+$/  # Lowercase letters and numbers only
+    regEx: /^[a-z]{1}[a-z0-9]+$/i  # Lowercase letters and numbers only
     min: 3
     max: 30
   emails:
     type: Array
     optional: true
-    'emails.$':
-      type: Object
-    'emails.$.address':
-      type: String
-      regEx: SimpleSchema.RegEx.Email
-    'emails.$.verified':
-      type: Boolean
+  'emails.$':
+    type: Object
+  'emails.$.address':
+    type: String
+    regEx: SimpleSchema.RegEx.Email
+  'emails.$.verified':
+    type: Boolean
   registered_emails:
     type: [ Object ]
     optional: true

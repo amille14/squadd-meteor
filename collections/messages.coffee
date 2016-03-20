@@ -1,11 +1,11 @@
-Messages = new Mongo.Collection "messages"
+@db.Messages = new Mongo.Collection "messages"
 
-Messages.allow
+@db.Messages.allow
   insert: -> false
   update: -> false
   remove: -> false
 
-Messages.deny
+@db.Messages.deny
   insert: -> true
   update: -> true
   remove: -> true
@@ -29,5 +29,5 @@ MessagesSchema = new SimpleSchema
     label: "The content of this message"
     max: 5000
 
-Messages.attachSchema @UtilSchemas.Timestamps
-Messages.attachSchema MessagesSchema
+@db.Messages.attachSchema @UtilSchemas.Timestamps
+@db.Messages.attachSchema MessagesSchema

@@ -4,8 +4,8 @@
       type: Date
       label: "The date and time this was created at"
       denyUpdate: true
-      autovalue: -> return new Date if @isInsert
+      autoValue: -> return new Date if @isInsert
     updatedAt:
       type: Date
       label: "The date and time this was last updated at"
-      autovalue: -> return new Date if @isUpdate
+      autoValue: -> return new Date if @isUpdate

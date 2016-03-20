@@ -3,7 +3,7 @@
 
   _renderText: (text) ->
     # Split multi-line comments so each line can be rendered separately
-    lines = text.split(new RegExp('\r?\n','g'))
+    lines = text?.split(new RegExp('\r?\n','g')) ? ""
 
     # Automatically add links (see https://github.com/gregjacobs/Autolinker.js)
     autolinker = new Autolinker
