@@ -1,5 +1,5 @@
-@ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
-@ReactTransitionGroup = React.addons.ReactTransitionGroup
+@ReactCSSTransitionGroup = require('react-addons-css-transition-group')
+@ReactTransitionGroup = require('react-addons-transition-group')
 
 @TransitionFlashBG = React.createClass
   render: ->

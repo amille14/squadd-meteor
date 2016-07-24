@@ -1,3 +1,5 @@
+{ mount } = require("react-mounter")
+
 #=== PUBLIC ROUTES ===
 publicRoutes = FlowRouter.group(name: 'public')
 
@@ -7,12 +9,12 @@ publicRoutes.route '/login',
     redirect('app') if Meteor.userId()
   ]
   action: ->
-    ReactLayout.render App, yield: <LoginCard />
+    mount App, yield: <LoginCard />
 
 publicRoutes.route '/signup',
   name: 'signup'
   action: ->
-    ReactLayout.render App, yield: <SignupCard />
+    mount App, yield: <SignupCard />
 
 publicRoutes.route '/logout',
   name: 'logout'
@@ -36,14 +38,14 @@ authenticatedRoutes = FlowRouter.group
 authenticatedRoutes.route '/',
   name: 'app'
   action: ->
-    Session.set "currentRoomId", "ELag6W7uwLdRbB38k"
-    ReactLayout.render App, yield: <ChatLayout />
+    Session.set "currentRoomId", "ELag6W7uwLdRbB38k" # TODO: Change this to be the Session's current room
+    mount App, yield: <ChatLayout />
 
 
 #=== 404 NOT FOUND ===
 FlowRouter.notFound =
   action: ->
-    ReactLayout.render App, yield: <NotFound404 />
+    mount App, yield: <NotFound404 />
 
 
 #=== HELPERS ===

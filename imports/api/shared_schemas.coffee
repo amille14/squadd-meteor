@@ -1,4 +1,4 @@
-@UtilSchemas =
+module.exports =
   Timestamps: new SimpleSchema
     createdAt:
       type: Date

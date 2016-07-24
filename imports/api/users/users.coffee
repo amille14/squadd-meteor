@@ -1,3 +1,7 @@
+SharedSchemas = require("../shared_schemas")
+Squadds = require("../squadds/squadds")
+Rooms = require("../rooms/rooms")
+
 Meteor.users.allow
   insert: -> false
   update: -> false
@@ -26,19 +30,9 @@ Schema.UserProfile = new SimpleSchema
     type: String
     optional: true
     max: 20
-  birthday:
-    type: Date
-    optional: true
   gender:
     type: String
     allowedValues: ['male', 'female']
-    optional: true
-  organization:
-    type: String
-    optional: true
-  website:
-    type: String
-    regEx: SimpleSchema.RegEx.Url
     optional: true
   bio:
     type: String
@@ -114,6 +108,17 @@ Schema.User = new SimpleSchema
     type: Date
     optional: true
 
+Meteor.users.publicFields =
+  username: 1
+  profile: 1
+  squadds: 1
 
-Meteor.users.attachSchema @UtilSchemas.Timestamps
+Meteor.users.attachSchema SharedSchemas.Timestamps
 Meteor.users.attachSchema Schema.User
+
+#=== HELPERS ===
+Meteor.users.helpers
+  squadds: -> Squadds.find {_id: {$in: _.map(@squadds, "squaddId") }}
+  room: -> Rooms.findOne @roomId
+
+module.exports = Meteor.users

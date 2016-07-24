@@ -1,11 +1,15 @@
-@db.Posts = new Mongo.Collection "posts"
+SharedSchemas = require("../shared_schemas")
+Users = require("../users/users")
+Rooms = require("../rooms/rooms")
 
-@db.Posts.allow
+class PostsCollection extends Mongo.Collection
+Posts = exports.Posts = new PostsCollection "Posts"
+
+Posts.allow
   insert: -> false
   update: -> false
   remove: -> false
-
-@db.Posts.deny
+Posts.deny
   insert: -> true
   update: -> true
   remove: -> true
@@ -47,5 +51,22 @@ PostsSchema = new SimpleSchema
     label: "A list of user ids who can view this post"
     optional: true
 
-@db.Posts.attachSchema @UtilSchemas.Timestamps
-@db.Posts.attachSchema PostsSchema
+Posts.publicFields = 
+  userId: 1
+  roomId: 1
+  type: 1
+  title: 1
+  content: 1
+  url: 1
+  cred: 1
+
+Posts.attachSchema SharedSchemas.Timestamps
+Posts.attachSchema PostsSchema
+
+#=== HELPERS ===
+Posts.helpers
+  user: -> Users.findOne @userId
+  room: -> Rooms.findOne @roomid
+
+
+module.exports = Posts

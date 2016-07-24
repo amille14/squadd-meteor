@@ -28,7 +28,7 @@
     e?.preventDefault()
     text = @refs.messageInput.value?.trim()
     if text? and text isnt ""
-      Meteor.call "insertMessage", text, Session.get("currentRoomId")
+      Meteor.call "messages.insert", text, Session.get("currentRoomId")
       @refs.messageInput.value = ""
       @setState {height: @getInitialState().height, justSubmitted: true}
 
@@ -39,7 +39,7 @@
 
   _handleKeyDown: (e) ->
     # TODO: Do something when up arrow key is pressed
-    # if e.which is 38 and @refs.messageInput.value is "" or !@refs.messageInput.value?
+    # if e.which is 38 and (@refs.messageInput.value is "" or !@refs.messageInput.value?)
 
   _handleChange: (e) ->
     MAX_LENGTH = 5000

@@ -1,13 +1,18 @@
-@db.Rooms = new Mongo.Collection "rooms"
+SharedSchemas = require("../shared_schemas")
+Users = require("../users/users")
+Squadds = require("../squadds/squadds")
+Messages = require("../messages/messages")
+
+class RoomsCollection extends Mongo.Collection
+Rooms = exports.Rooms = new RoomsCollection "Rooms"
 
 # Disable insert, update, and remove on the client.
 # Must use meteor methods on server to handle all operations for security purposes.
-@db.Rooms.allow
+Rooms.allow
   insert: -> false
   update: -> false
   remove: -> false
-
-@db.Rooms.deny
+Rooms.deny
   insert: -> true
   update: -> true
   remove: -> true
@@ -34,5 +39,19 @@ RoomsSchema = new SimpleSchema
     max: 140
     optional: true
 
-@db.Rooms.attachSchema @UtilSchemas.Timestamps
-@db.Rooms.attachSchema RoomsSchema
+Rooms.publicFields = 
+  userId: 1
+  squaddId: 1
+  name: 1
+  description: 1
+
+Rooms.attachSchema SharedSchemas.Timestamps
+Rooms.attachSchema RoomsSchema
+
+#=== HELPERS ===
+Rooms.helpers
+  user: -> Users.findOne @userId
+  squadd: -> Squadds.findOne @squaddId
+  messages: -> Messages.find {roomId: @_id}, {sort: {createdAt: 1}}
+
+module.exports = Rooms

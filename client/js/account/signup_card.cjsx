@@ -1,3 +1,5 @@
+zxcvbn = require("../../../node_modules/zxcvbn")
+
 @SignupCard = React.createClass
   getInitialState: ->
     {usernameValid: true, emailValid: true, passwordValid: true, passwordScore: -1}

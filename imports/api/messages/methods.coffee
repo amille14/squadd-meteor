@@ -1,8 +1,10 @@
+Messages = require("./messages")
+
 Meteor.methods
-  insertMessage: (content, roomId) ->
+  'messages.insert': (content, roomId) ->
     throw new Meteor.Error("not-authorized") unless Meteor.userId()?
 
-    db.Messages.insert
+    Messages.insert
       content: content
       userId: Meteor.userId()
       roomId: roomId

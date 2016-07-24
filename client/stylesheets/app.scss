@@ -1,6 +1,5 @@
 @import "util/fonts";
-@import "util/mixins";
-@import "util/variables";
+@import "_util";
 
 body {
   font-family: $eau-douce;
@@ -107,31 +106,7 @@ body {
       outline: none !important;
     }
 
-    &::-webkit-input-placeholder {
-      color: $blue-gray;
-      font-family: $source-sans;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      opacity: 1.0;
-    }
-
-    &:-moz-placeholder {
-      color: $blue-gray;
-      font-family: $source-sans;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      opacity: 1.0;
-    }
-
-    &::-moz-placeholder {
-      color: $blue-gray;
-      font-family: $source-sans;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      opacity: 1.0;
-    }
-
-    &:-ms-input-placeholder {
+    @include placeholder {
       color: $blue-gray;
       font-family: $source-sans;
       font-weight: 400;
@@ -144,34 +119,6 @@ body {
     background: $white;
     box-shadow: rgba(43, 59, 93, 0.3) 0px 1px 4px 0px;
     @include border-radius(6px);
-  }
-
-  .alert {
-    padding: 12px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    letter-spacing: 0.02em;
-    color: $orange;
-    border: 1px solid;
-    border-left: 4px solid;
-    border-color: currentColor;
-    background: fade-out($orange, 0.76);
-
-    &.alert-warning {
-      color: $orange;
-      background: fade-out($orange, 0.76);
-    }
-
-    &.alert-error {
-      color: $red;
-      background: fade-out($red, 0.76);
-    }
-
-    &.alert-success {
-      color: $teal;
-      background: fade-out($teal, 0.76);
-    }
   }
 
   .centered {
@@ -226,116 +173,6 @@ button, .btn, .button {
 }
 
 
-/*=== SQUADD LOGO ===*/
-.squadd-logo {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 36px;
-  color: $dark-gray;
-  transform-origin: top left;
-
-  .logo-icon {
-    font-size: inherit;
-    height: 1em;
-    width: 0.96em;
-    display: inline-block;
-    vertical-align: 0;
-  }
-
-  .logo-text {
-    font-size: inherit;
-    height: 0.916666667em;
-    display: inline-block;
-    vertical-align: 0.05em;
-    margin: 0.04em 0;
-  }
-
-  .logo-icon + .logo-text {
-    margin-left: 0.166667em;
-  }
-}
-
-
-/*=== FLOAT LABEL INPUT ===*/
-.float-label-input-group {
-  position: relative;
-  text-align: left;
-  margin-bottom: 10px;
-
-  &:last-child {
-    margin-bottom: 0px;
-  }
-
-  input {
-    text-align: left;
-    width: 100%;
-    padding: 16px 0px 8px;
-    font-size: 16px;
-    background: none;
-    box-shadow: none;
-    border: none;
-    border-bottom: 2px solid $blue-gray;
-    @include transition($ease-all-200);
-    @include border-radius(0);
-  }
-
-  label {
-    text-align: left;
-    width: 100%;
-    display: block;
-    pointer-events: none;
-    position: absolute;
-    top: 11px;
-    left: 0;
-
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: $blue-gray;
-
-    @include transition($ease-all-200);
-  }
-
-  input:focus, input:valid, input.filled {
-    @include transition($ease-all-200);
-
-    & ~ label {
-      font-size: 12px;
-      top: -3px;
-      @include transition($ease-all-200);
-    }
-  }
-
-  input:focus {
-    border-bottom: 2px solid $teal;
-
-    & ~ label {
-      color: $teal;
-    }
-  }
-
-  &.valid {
-    input:focus, input:valid, input.filled {
-      border-bottom: 2px solid $teal !important;
-
-      & ~ label {
-        color: $teal !important;
-      }
-    }
-  }
-
-  &.invalid {
-    input:focus, input:valid, input.filled {
-      border-bottom: 2px solid $orange !important;
-
-      & ~ label {
-        color: $orange !important;
-      }
-    }
-  }
-}
-
 /*== USER AVATAR ===*/
 .user-avatar {
   display: inline-block;
@@ -343,46 +180,6 @@ button, .btn, .button {
   height: 36px;
   background: $teal;
   @include border-radius(50%);
-}
-
-/*=== PASSWORD SCORE BAR ===*/
-.password-score-bar {
-  width: 100%;
-  position: relative;
-
-  .score-bar {
-    display: inline-block;
-    width: 20%;
-    height: 4px;
-    opacity: 0;
-    @include transition($ease-all-300);
-
-    &.score-0 { background: $red }
-    &.score-1 { background: $orange }
-    &.score-2 { background: $yellow }
-    &.score-3 { background: $green }
-    &.score-4 { background: $teal }
-
-    &.active {
-      opacity: 1;
-      @include transition($ease-all-300);
-    }
-  }
-
-  .password-score-text {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    color: $orange;
-    text-align: right;
-
-    &.good {
-      color: $teal;
-    }
-  }
 }
 
 

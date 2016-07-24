@@ -1,3 +1,5 @@
+Messages = require("../../../imports/api/messages/messages")
+
 @MessagesContainer = React.createClass
   getInitialState: ->
     marginBottom: 69
@@ -16,22 +18,23 @@
         marginBottom: @state.marginBottom
 
     <div id="messages-container" ref="messagesContainer" {...props}>
-      <Messages ref="messages" />
+      <RoomMessages ref="messages" />
       <MessageInput parent={@} />
     </div>
 
 
 
-#=== MESSAGES ====
-@Messages = React.createClass
+#=== MESSAGES ===
+RoomSub = new SubsManager()
+@RoomMessages = React.createClass
   mixins: [ReactMeteorData]
 
   getInitialState: ->
     shouldScrollBottom: true
 
   getMeteorData: ->
-    subHandle = Meteor.subscribe("roomMessages", Session.get("currentRoomId"))
-    messages = db.Messages.find({roomId: Session.get("currentRoomId")}, {sort: {createdAt: 1}})
+    subHandle = RoomSub.subscribe("room", Session.get("currentRoomId"))
+    messages = Messages.find({roomId: Session.get("currentRoomId")}, {sort: {createdAt: 1}})
 
     return {
       ready: subHandle.ready()
