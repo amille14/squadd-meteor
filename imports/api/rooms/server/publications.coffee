@@ -1,6 +1,6 @@
-Rooms = require("../rooms")
-Messages = require("../../messages/messages")
-Users = require("../../users/users")
+Rooms = require("../rooms").Rooms
+Messages = require("../../messages/messages").Messages
+Users = require("../../users/users").Users
 
 Meteor.publishComposite "room", (roomId) ->
   find: -> Rooms.findOne {_id: roomId}, Rooms.publicFields

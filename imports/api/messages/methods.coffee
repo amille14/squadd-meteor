@@ -1,4 +1,4 @@
-Messages = require("./messages")
+Messages = require("./messages").Messages
 
 Meteor.methods
   'messages.insert': (content, roomId) ->

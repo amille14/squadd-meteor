@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "bourbon": "^4.2.7",
+    "es6-shim": "^0.35.1",
     "meteor-node-stubs": "^0.2.3",
     "node-sass": "^3.8.0",
     "react": "^15.2.1",

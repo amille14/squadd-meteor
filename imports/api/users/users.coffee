@@ -1,16 +1,18 @@
 SharedSchemas = require("../shared_schemas")
-Squadds = require("../squadds/squadds")
-Rooms = require("../rooms/rooms")
+Messages = require("../messages/messages").Messages
+Squadds = require("../squadds/squadds").Squadds
+Rooms = require("../rooms/rooms").Rooms
 
-Meteor.users.allow
-  insert: -> false
-  update: -> false
-  remove: -> false
+unless Meteor.settings.public.ENV in ["development", "staging"]
+  Meteor.users.allow
+    insert: -> false
+    update: -> false
+    remove: -> false
 
-Meteor.users.deny
-  insert: -> true
-  update: -> true
-  remove: -> true
+  Meteor.users.deny
+    insert: -> true
+    update: -> true
+    remove: -> true
 
 Schema = {}
 
@@ -118,7 +120,8 @@ Meteor.users.attachSchema Schema.User
 
 #=== HELPERS ===
 Meteor.users.helpers
+  messages: -> Messages.find {userId: @_id}, {sort: {createdAt: 1}}
   squadds: -> Squadds.find {_id: {$in: _.map(@squadds, "squaddId") }}
   room: -> Rooms.findOne @roomId
 
-module.exports = Meteor.users
+exports.Users = Meteor.users

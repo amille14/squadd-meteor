@@ -1,20 +1,21 @@
 SharedSchemas = require("../shared_schemas")
-Users = require("../users/users")
-Rooms = require("../rooms/rooms")
-Posts = require("../posts/posts")
+Users = require("../users/users").Users
+Rooms = require("../rooms/rooms").Rooms
+Posts = require("../posts/posts").Posts
 
 class MessagesCollection extends Mongo.Collection
 Messages = exports.Messages = new MessagesCollection "Messages"
 
-Messages.allow
-  insert: -> false
-  update: -> false
-  remove: -> false
+unless Meteor.settings.public.ENV in ["development", "staging"]
+  Messages.allow
+    insert: -> false
+    update: -> false
+    remove: -> false
 
-Messages.deny
-  insert: -> true
-  update: -> true
-  remove: -> true
+  Messages.deny
+    insert: -> true
+    update: -> true
+    remove: -> true
 
 MessagesSchema = new SimpleSchema
   #=== ASSOCIATIONS ===
@@ -50,5 +51,3 @@ Messages.helpers
   user: -> Users.findOne @userId
   room: -> Rooms.findOne @roomId
   post: -> Posts.findOne @postId
-
-module.exports = Messages

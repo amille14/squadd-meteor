@@ -1,18 +1,19 @@
 SharedSchemas = require("../shared_schemas")
-Users = require("../users/users")
-Rooms = require("../rooms/rooms")
+Users = require("../users/users").Users
+Rooms = require("../rooms/rooms").Rooms
 
 class PostsCollection extends Mongo.Collection
 Posts = exports.Posts = new PostsCollection "Posts"
 
-Posts.allow
-  insert: -> false
-  update: -> false
-  remove: -> false
-Posts.deny
-  insert: -> true
-  update: -> true
-  remove: -> true
+unless Meteor.settings.public.ENV in ["development", "staging"]
+  Posts.allow
+    insert: -> false
+    update: -> false
+    remove: -> false
+  Posts.deny
+    insert: -> true
+    update: -> true
+    remove: -> true
 
 PostsSchema = new SimpleSchema
   #=== ASSOCIATIONS ===
@@ -67,6 +68,3 @@ Posts.attachSchema PostsSchema
 Posts.helpers
   user: -> Users.findOne @userId
   room: -> Rooms.findOne @roomid
-
-
-module.exports = Posts
