@@ -1,16 +1,18 @@
-Rooms = require("../rooms").Rooms
+Rooms    = require("../../rooms/rooms").Rooms
 Messages = require("../../messages/messages").Messages
-Users = require("../../users/users").Users
+Users    = require("../../users/users").Users
 
 Meteor.publishComposite "room", (roomId) ->
-  find: -> Rooms.findOne {_id: roomId}, Rooms.publicFields
+  find: ->
+    Rooms.find {_id: roomId}, Rooms.publicFields
 
   # Messages
   children: [
-    find: (room) -> room.messages
+    find: (room) ->
+      Messages.find {roomId: room._id}, {sort: {createdAt: 1}}
 
     # Users
     children: [
-      find: (message, room) -> message.user
+      find: (message, room) -> Users.find _id: message.userId
     ]
   ]

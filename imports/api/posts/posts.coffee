@@ -66,5 +66,5 @@ Posts.attachSchema PostsSchema
 
 #=== HELPERS ===
 Posts.helpers
-  user: -> Users.findOne @userId
-  room: -> Rooms.findOne @roomid
+  user: -> Users.find _id: @userId
+  room: -> Rooms.find _id: @roomid

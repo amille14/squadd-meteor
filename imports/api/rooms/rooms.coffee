@@ -51,8 +51,6 @@ Rooms.attachSchema RoomsSchema
 
 #=== HELPERS ===
 Rooms.helpers
-  user: -> Users.findOne @userId
-  squadd: -> Squadds.findOne @squaddId
+  user: -> Users.find _id: @userId
+  squadd: -> Squadds.find _id: @squaddId
   messages: -> Messages.find {roomId: @_id}, {sort: {createdAt: 1}}
-
-# module.exports = Rooms

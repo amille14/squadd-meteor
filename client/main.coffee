@@ -1,5 +1,3 @@
-# require("es6-shim")
-
 # Require collections so they can be queried in dev/staging console
 if Meteor.settings.public.ENV in ['development', 'staging']
   @db = {}

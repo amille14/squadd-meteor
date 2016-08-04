@@ -122,6 +122,6 @@ Meteor.users.attachSchema Schema.User
 Meteor.users.helpers
   messages: -> Messages.find {userId: @_id}, {sort: {createdAt: 1}}
   squadds: -> Squadds.find {_id: {$in: _.map(@squadds, "squaddId") }}
-  room: -> Rooms.findOne @roomId
+  room: -> Rooms.find _id: @roomId
 
 exports.Users = Meteor.users

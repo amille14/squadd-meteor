@@ -1,4 +1,4 @@
-Messages = require("../../../imports/api/messages/messages").Messages
+# Messages = require("../../../imports/api/messages/messages").Messages
 
 @MessagesContainer = React.createClass
   getInitialState: ->

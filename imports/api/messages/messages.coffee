@@ -48,6 +48,6 @@ Messages.attachSchema MessagesSchema
 
 #=== HELPERS ===
 Messages.helpers
-  user: -> Users.findOne @userId
-  room: -> Rooms.findOne @roomId
-  post: -> Posts.findOne @postId
+  user: -> Users.find _id: @userId
+  room: -> Rooms.find _id: @roomId
+  post: -> Posts.find _id: @postId
