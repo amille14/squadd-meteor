@@ -1,0 +1,47 @@
+@import "../_util";
+
+.loader {
+  display: inline-block;
+  padding: 1em;
+  font-size: 10px;
+  color: $teal;
+  position: relative;
+
+  .ball {
+    position: relative;
+    background: currentColor;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    top: -0.4em;
+    margin: 0.4em 0.03em;
+    animation-delay: 0.0s;
+    @include border-radius(50%);
+    @include transform(scale(0.4));
+    @include animation(loader 1.2s infinite ease-in-out both);
+
+    &:nth-child(1) {
+      animation-delay: 0.16s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.32s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.48s;
+    }
+  }
+}
+
+@keyframes loader {
+  33% {
+    @include transform(scale(0.8));
+    opacity: 1.0;
+  }
+  50% {
+    top: 0.4em;
+    
+  }
+  66% {
+    opacity: 0.4;
+  }
+}

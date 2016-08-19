@@ -1,2 +1,4 @@
 @import "util/mixins";
 @import "util/variables";
+
+/* This file is imported by pretty much every other css file so that they all have access to mixins and variables. */

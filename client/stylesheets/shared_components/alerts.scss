@@ -2,28 +2,31 @@
 
 .alert {
   padding: 12px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0.02em;
   color: $orange;
   border: 1px solid;
   border-left: 4px solid;
-  border-color: currentColor;
+  border-color: fade-out($orange, 0.4);
   background: fade-out($orange, 0.76);
 
   &.alert-warning {
     color: $orange;
     background: fade-out($orange, 0.76);
+    border-color: fade-out($orange, 0.4);
   }
 
   &.alert-error {
     color: $red;
     background: fade-out($red, 0.76);
+    border-color: fade-out($red, 0.4);
   }
 
   &.alert-success {
     color: $teal;
     background: fade-out($teal, 0.76);
+    border-color: fade-out($teal, 0.4);
   }
 }

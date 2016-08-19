@@ -8,7 +8,7 @@
   bottom: 0;
   z-index: 80;
   margin-bottom: 69px;
-  background: $white;
+  background: white;
   overflow-y: hidden;
 
   #messages {
@@ -36,7 +36,7 @@
       }
 
       &:hover {
-        background: lighten($light-gray, 9%);
+        background: lighten($light-gray-2, 9%);
       }
 
       &:not(.first):hover {
@@ -66,7 +66,7 @@
         word-wrap: break-word;
 
         h1, h2, h3, h4, h5, h6 {
-          color: $dark-gray;
+          color: $text-dark-gray;
           margin: 0;
           line-height: 1.43em;
           text-transform: none;
@@ -80,13 +80,13 @@
         top: 5px;
         font-size: 12px;
         font-family: $eau-douce;
-        color: $blue-gray;
+        color: $text-gray;
       }
     }
 
     .date-divider {
       position: relative;
-      border-bottom: 1px solid $gray;
+      border-bottom: 1px solid $light-gray-2;
       text-align: center;
       margin: 36px -24px 30px;
       height: 0;
@@ -94,11 +94,11 @@
       .date {
         position: relative;
         display: inline-block;
-        background: $white;
+        background: white;
         padding: 0px 24px;
         top: -9px;
         text-transform: uppercase;
-        color: $blue-gray;
+        color: $text-gray;
         font-size: 13px;
         font-weight: 500;
         letter-spacing: 0.05em;
@@ -114,7 +114,7 @@
   bottom: 0;
   padding: 0px 24px 24px;
   z-index: 100;
-  background: $white;
+  background: white;
 
   #message-input {
     box-sizing: content-box;
@@ -126,7 +126,7 @@
     overflow-y: auto;
     outline: none !important;
     background: white;
-    border: 2px solid fade-out($dark-gray, 0.7);
+    border: 2px solid fade-out($ui-dark-gray, 0.7);
     @include border-radius(3px);
     @include transition(border 300ms ease);
 

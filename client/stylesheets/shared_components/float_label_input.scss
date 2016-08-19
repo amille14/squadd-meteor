@@ -18,7 +18,7 @@
     background: none;
     box-shadow: none;
     border: none;
-    border-bottom: 2px solid $blue-gray;
+    border-bottom: 2px solid $text-gray;
     @include transition($ease-all-200);
     @include border-radius(0);
   }
@@ -36,7 +36,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: $blue-gray;
+    color: $text-gray;
 
     @include transition($ease-all-200);
   }

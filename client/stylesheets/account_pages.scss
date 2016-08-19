@@ -1,18 +1,27 @@
 @import "_util";
 
-#signup-card, #login-card {
-  padding: 36px;
-  padding-bottom: 28px;
-  width: 324px;
-  margin: 140px auto 70px;
-  text-align: center;
+.account-card-container {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  @include transform(translate(-50%, -40.4%));
 
   .squadd-logo {
-    margin-bottom: 24px;
+    display: block;
+    padding-bottom: 20px;
+    margin: auto;
   }
 }
 
-#signup-form, #login-form {
+#signup-card, #signin-card {
+  padding: 36px;
+  padding-bottom: 28px;
+  width: 324px;
+  margin: auto;
+  text-align: center;
+}
+
+#signup-form, #signin-form {
   margin-bottom: 16px;
 
   .input-group {
@@ -49,8 +58,8 @@
 
     &.score-0 { background: $red }
     &.score-1 { background: $orange }
-    &.score-2 { background: $yellow }
-    &.score-3 { background: $green }
+    &.score-2 { background: $ui-yellow }
+    &.score-3 { background: $ui-green }
     &.score-4 { background: $teal }
 
     &.active {

@@ -9,12 +9,12 @@ publicRoutes.route '/login',
     redirect('app') if Meteor.userId()
   ]
   action: ->
-    mount App, yield: <LoginCard />
+    mount App, yield: <Signin />
 
 publicRoutes.route '/signup',
   name: 'signup'
   action: ->
-    mount App, yield: <SignupCard />
+    mount App, yield: <Signup />
 
 publicRoutes.route '/logout',
   name: 'logout'

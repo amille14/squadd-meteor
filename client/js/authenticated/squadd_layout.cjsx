@@ -1,17 +1,17 @@
 { createContainer } = require("meteor/react-meteor-data")
 { SubsManager } = require("meteor/meteorhacks:subs-manager")
-Messages = require("../../imports/api/messages/messages").Messages
-Rooms = require("../../imports/api/rooms/rooms").Rooms
+Messages = require("../../../imports/api/messages/messages").Messages
+Rooms = require("../../../imports/api/rooms/rooms").Rooms
 
 class SquaddLayout extends React.Component
   render: ->
-    console.log "PROPS", @props
-
     <div id="squadd-layout">
       { if @props.loading
-          <div>LOADING</div> # TODO: Change me to real loading spinner
+          <Loader style={fontSize: 12}/>
         else
-          <div>DONE</div>
+          <div>
+            <SideNav />
+          </div>
       }
     </div>
 
