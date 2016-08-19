@@ -123,18 +123,24 @@ body {
     }
   }
 
-  .card {
-    background: white;
-    border: 1px solid $light-gray-2;
-    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.12);
-    /*box-shadow: rgba(43, 59, 93, 0.3) 0px 1px 4px 0px;*/
-    @include border-radius(2px);
-  }
-
   .centered {
     margin: auto;
     text-align: center;
   }
+}
+
+.card {
+  background: white;
+  border: 1px solid $light-gray-2;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.12);
+  @include border-radius(2px);
+}
+
+.page-loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
 }
 
 /*== USER AVATAR ===*/

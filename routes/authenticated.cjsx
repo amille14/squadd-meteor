@@ -23,4 +23,4 @@ authenticatedRoutes.route '/',
     Session.set "currentSquaddId", "AyyA2C6RSMiqAoLFq"
     Session.set "currentRoomId", "qqaw6qMm9oJ7352o2"
     
-    mount App, yield: <SquaddLayout />
+    mount App, yield: <ChatLayout />

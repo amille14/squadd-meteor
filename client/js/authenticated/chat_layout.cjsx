@@ -3,11 +3,13 @@
 Messages = require("../../../imports/api/messages/messages").Messages
 Rooms = require("../../../imports/api/rooms/rooms").Rooms
 
-class SquaddLayout extends React.Component
+class ChatLayout extends React.Component
   render: ->
-    <div id="squadd-layout">
+    <div id="chat-layout">
       { if @props.loading
-          <Loader style={fontSize: 12}/>
+          <div className="page-loader-container">
+            <Loader style={fontSize: 18}/>
+          </div>
         else
           <div>
             <SideNav />
@@ -19,7 +21,7 @@ class SquaddLayout extends React.Component
 SquaddSubsManager = new SubsManager()
 
 # Create data container and fetch data
-@SquaddLayout = createContainer ((props) =>
+@ChatLayout = createContainer ((props) =>
   # TODO: Fetch the whole squadd, not just the room and messages
 
   roomId = Session.get("currentRoomId")
@@ -34,5 +36,5 @@ SquaddSubsManager = new SubsManager()
     messages: messages.fetch()
   }
 
-), SquaddLayout
+), ChatLayout
 
