@@ -1,5 +1,5 @@
 class @DateDivider extends React.Component
-  @propTypes: ->
+  @propTypes:
     date: React.PropTypes.instanceOf(Date).isRequired
 
   shouldComponentUpdate: (np, ns)->

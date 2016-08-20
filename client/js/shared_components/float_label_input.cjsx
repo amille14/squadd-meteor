@@ -6,7 +6,7 @@ class @FloatLabelInput extends React.Component
     @state =
       filled: false
 
-  @propTypes: ->
+  @propTypes:
     label: React.PropTypes.string.isRequired
 
   #=== LIFECYCLE ===
