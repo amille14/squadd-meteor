@@ -9,14 +9,22 @@ $red:    #D93E64;
 $mauve:  #A1007F;
 $purple: #530092;
 $blue:   #286CD1;
-$yellow: #EFD519;
-$green:  #58DC4F;
 
-$white: #FDFDFD;
-$light-gray: #E0E0E0;
-$blue-gray: #B6B8C1;
-$gray: #E0E0E2;
-$dark-gray: #2F393C;
+$ui-yellow: #EFD519;
+$ui-green:  #58DC4F;
+$ui-teal-1: $teal;
+$ui-teal-2: #18C9BC;
+
+$ui-dark-gray:   #20212A; /* Darkest */
+$ui-blue-gray-1: #243044; /* Darker */
+$ui-blue-gray-2: #323E52; /* Dark */
+
+$off-white:    #FDFDFD;
+$light-gray-1: #F6F4F9;
+$light-gray-2: #E0E0E2;  /* Border color */
+
+$text-dark-gray: $ui-dark-gray;
+$text-gray: #A6ABBA;
 
 /*=== TRANSITIONS ===*/
 $ease-all-200: all 200ms ease;

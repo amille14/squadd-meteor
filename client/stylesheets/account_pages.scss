@@ -1,19 +1,27 @@
-@import "util/mixins";
-@import "util/variables";
+@import "_util";
 
-#signup-card, #login-card {
-  padding: 36px;
-  padding-bottom: 28px;
-  width: 324px;
-  margin: 140px auto 70px;
-  text-align: center;
+.account-card-container {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  @include transform(translate(-50%, -40.4%));
 
   .squadd-logo {
-    margin-bottom: 24px;
+    display: block;
+    padding-bottom: 20px;
+    margin: auto;
   }
 }
 
-#signup-form, #login-form {
+#signup-card, #signin-card {
+  padding: 36px;
+  padding-bottom: 28px;
+  width: 324px;
+  margin: auto;
+  text-align: center;
+}
+
+#signup-form, #signin-form {
   margin-bottom: 16px;
 
   .input-group {
@@ -33,5 +41,45 @@
 
   .password-score-bar {
     margin-top: -19px;
+  }
+}
+
+/*=== PASSWORD SCORE BAR ===*/
+.password-score-bar {
+  width: 100%;
+  position: relative;
+
+  .score-bar {
+    display: inline-block;
+    width: 20%;
+    height: 4px;
+    opacity: 0;
+    @include transition($ease-all-300);
+
+    &.score-0 { background: $red }
+    &.score-1 { background: $orange }
+    &.score-2 { background: $ui-yellow }
+    &.score-3 { background: $ui-green }
+    &.score-4 { background: $teal }
+
+    &.active {
+      opacity: 1;
+      @include transition($ease-all-300);
+    }
+  }
+
+  .password-score-text {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: $orange;
+    text-align: right;
+
+    &.good {
+      color: $teal;
+    }
   }
 }

@@ -1,20 +1,5 @@
-@App = React.createClass
-  mixins: [ReactMeteorData]
-
-  getMeteorData: ->
-    return {
-      loggingIn: Meteor.loggingIn()
-    }
-
+class @App extends React.Component
   render: ->
     <div id="app">
-    {
-      if @data.loggingIn
-        <div className="centered" style={marginTop: 240}>
-          <Loader />
-        </div>
-
-      else
-        @props.yield
-    }
+        { @props.yield }
     </div>
