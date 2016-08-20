@@ -13,6 +13,7 @@ class ChatLayout extends React.Component
         else
           <div>
             <SideNav />
+            <Chat messages={@props.messages} room={@props.room} />
           </div>
       }
     </div>
